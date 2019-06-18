@@ -12,7 +12,10 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-- task: compile.sh
+
+- task: Bash@3
+  inputs:
+    filePath: 'compile.sh'
 
 - script: 
     echo Add other tasks to build, test, and deploy your project.
