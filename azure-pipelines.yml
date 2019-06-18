@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -17,6 +18,12 @@ steps:
   inputs:
     filePath: 'compile.sh'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'Test_Repo1'
+    Contents: 'lnCompile.bat'
+    TargetFolder: 'Deply'
+    
 - script: 
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
