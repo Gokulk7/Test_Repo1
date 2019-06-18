@@ -11,7 +11,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
+- script: echo Initiated Build process!
   displayName: 'Run a one-line script'
 
 - task: Bash@3
@@ -20,26 +20,21 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder:
-    Contents: 'lnCompile.bat'
-    TargetFolder: 'Deply'
+    Contents: 'README.md
+      lnCompile.bat
+      compile.sh'
+    TargetFolder: 'Deploy'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'Deply'
+    rootFolderOrFile: 'Deploy'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-- task: CopyPublishBuildArtifacts@1
-  inputs:
-    CopyRoot: 'Deply'
-    Contents: '**'
-    ArtifactName: 'Test_repo1'
-    ArtifactType: 'Container'
     
 - script: 
-    echo Add other tasks to build, test, and deploy your project.
+    
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
