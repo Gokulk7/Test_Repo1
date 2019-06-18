@@ -18,20 +18,11 @@ steps:
   inputs:
     filePath: 'compile.sh'
 
-- task: CopyFiles@2
+- task: CopyPublishBuildArtifacts@1
   inputs:
-    Contents: 'README.md
-      lnCompile.bat
-      compile.sh'
-    TargetFolder: 'Deploy'
-
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'Deploy'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    Contents: 'binary.tar.gz'
+    ArtifactName: 'binary'
+    ArtifactType: 'Container'
 
     
 - script: 
